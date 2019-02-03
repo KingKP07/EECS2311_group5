@@ -1,27 +1,18 @@
 package talkAppV1;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import com.jgoodies.forms.layout.RowSpec;
-import javax.swing.JToggleButton;
+
 import javax.swing.ButtonGroup;
-import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+import javax.swing.border.EmptyBorder;
 
 public class ConfigurationGUI extends JFrame {
 
@@ -29,9 +20,11 @@ public class ConfigurationGUI extends JFrame {
 	private JButton btnBack;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
-	private ArrayList<String> clips = new ArrayList<String>(), selected = new ArrayList(),
+	private ArrayList<String> clips = new ArrayList<String>(), selected = new ArrayList<String>(),
 			nonSelected = new ArrayList();
 	private String name;
+	private Toolkit t;
+	private final int WIDTH, HEIGHT;
 
 	/**
 	 * Launch the application.
@@ -46,10 +39,14 @@ public class ConfigurationGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public ConfigurationGUI(ArrayList clips) {
+		WIDTH = (int) t.getDefaultToolkit().getScreenSize().getWidth();
+		HEIGHT = (int) t.getDefaultToolkit().getScreenSize().getHeight();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 717, 535);
+		setBounds(0,0,WIDTH,HEIGHT);
+		setLocationRelativeTo(null);
+		setSize(WIDTH, HEIGHT);
 		contentPane = new JPanel();
-		contentPane.setSize(new Dimension(400, 400));
+		contentPane.setSize(new Dimension(WIDTH,HEIGHT));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
@@ -90,93 +87,94 @@ public class ConfigurationGUI extends JFrame {
 	}
 
 	private void init() {
-		contentPane.setLayout(new FormLayout(
-				new ColumnSpec[] {
-						FormSpecs.LABEL_COMPONENT_GAP_COLSPEC, ColumnSpec.decode("217px"), ColumnSpec.decode("128px"),
-						ColumnSpec.decode("37px"), ColumnSpec.decode("88px"), ColumnSpec.decode("237px"), },
-				new RowSpec[] { RowSpec.decode("37px"), FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
-						FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC,
-						FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
-						FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC,
-						FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
-						FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC,
-						FormSpecs.DEFAULT_ROWSPEC, FormSpecs.PARAGRAPH_GAP_ROWSPEC, RowSpec.decode("25px"),
-						FormSpecs.UNRELATED_GAP_ROWSPEC, RowSpec.decode("25px"), FormSpecs.PARAGRAPH_GAP_ROWSPEC,
-						RowSpec.decode("313px"), FormSpecs.UNRELATED_GAP_ROWSPEC, RowSpec.decode("34px"), }));
 
 		JToggleButton btnButton2 = new JToggleButton("STRONG NO");
+		btnButton2.setBounds(9, 48, 217, 23);
 		buttonGroup_1.add(btnButton2);
 		btnButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				removeSound(1);
 			}
 		});
-		contentPane.add(btnButton2, "2, 3, fill, fill");
+		contentPane.setLayout(null);
+		contentPane.add(btnButton2);
 
 		JButton btnNewButton_1 = new JButton("ADD");
-		contentPane.add(btnNewButton_1, "4, 3, fill, default");
+		btnNewButton_1.setBounds(354, 48, 37, 23);
+		contentPane.add(btnNewButton_1);
 
 		JToggleButton btnHello = new JToggleButton("HELLO");
+		btnHello.setBounds(479, 48, 237, 23);
 		buttonGroup.add(btnHello);
-		contentPane.add(btnHello, "6, 3, default, fill");
+		contentPane.add(btnHello);
 
 		JToggleButton btnButton3 = new JToggleButton("YES");
+		btnButton3.setBounds(9, 77, 217, 23);
 		btnButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				removeSound(2);
 			}
 		});
 		buttonGroup_1.add(btnButton3);
-		contentPane.add(btnButton3, "2, 5, fill, fill");
+		contentPane.add(btnButton3);
 
 		JButton btnRemove = new JButton("REMOVE");
-		contentPane.add(btnRemove, "4, 5, fill, default");
+		btnRemove.setBounds(354, 77, 37, 23);
+		contentPane.add(btnRemove);
 
 		JToggleButton btnCherie = new JToggleButton("HELLO CHERIE");
+		btnCherie.setBounds(479, 77, 237, 23);
 		buttonGroup.add(btnCherie);
-		contentPane.add(btnCherie, "6, 5, default, fill");
+		contentPane.add(btnCherie);
 
 		JToggleButton btnButton4 = new JToggleButton("HELL YEAH");
+		btnButton4.setBounds(9, 106, 217, 23);
 		btnButton4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				removeSound(3);
 			}
 		});
 		buttonGroup_1.add(btnButton4);
-		contentPane.add(btnButton4, "2, 7, fill, fill");
+		contentPane.add(btnButton4);
 
 		JToggleButton btnHelloThere = new JToggleButton("HELLO THERE");
+		btnHelloThere.setBounds(479, 106, 237, 23);
 		buttonGroup.add(btnHelloThere);
-		contentPane.add(btnHelloThere, "6, 7, default, fill");
+		contentPane.add(btnHelloThere);
 
 		JToggleButton btnBruh = new JToggleButton("BRUH");
+		btnBruh.setBounds(479, 135, 237, 23);
 		buttonGroup.add(btnBruh);
-		contentPane.add(btnBruh, "6, 9, default, fill");
+		contentPane.add(btnBruh);
 
 		JToggleButton btnTadaah = new JToggleButton("TADAAH");
+		btnTadaah.setBounds(479, 164, 237, 23);
 		buttonGroup.add(btnTadaah);
-		contentPane.add(btnTadaah, "6, 11");
+		contentPane.add(btnTadaah);
 		btnBack = new JButton("BACK");
+		btnBack.setBounds(9, 700, 707, 29);
 		btnBack.setFont(new Font("Stencil", Font.BOLD, 20));
-		contentPane.add(btnBack, "2, 27, 5, 1, fill, top");
+		contentPane.add(btnBack);
 
 		JToggleButton btnButton1 = new JToggleButton("NO");
+		btnButton1.setBounds(9, 19, 217, 23);
 		btnButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				removeSound(0);
 			}
 		});
 		buttonGroup_1.add(btnButton1);
-		contentPane.add(btnButton1, "2, 1, fill, bottom");
+		contentPane.add(btnButton1);
 
 		JToggleButton btnNewButton = new JToggleButton("BYE HAVE A BEAUTIFUL TIME");
+		btnNewButton.setBounds(479, 19, 237, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addSound(0);
 			}
 		});
 		buttonGroup.add(btnNewButton);
-		contentPane.add(btnNewButton, "6, 1, fill, bottom");
+		contentPane.add(btnNewButton);
 
 	}
 
