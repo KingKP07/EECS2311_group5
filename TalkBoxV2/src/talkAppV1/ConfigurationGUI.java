@@ -1,18 +1,9 @@
 package talkAppV1;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -25,16 +16,21 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.awt.event.ActionEvent;
-import javax.swing.JList;
+
 import javax.sound.sampled.LineUnavailableException;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.JToggleButton;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.ButtonGroup;
-import java.awt.Dimension;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 public class ConfigurationGUI extends JFrame {
 	private JScrollPane scrollerAudio, scrollerButtons;
@@ -273,7 +269,7 @@ public class ConfigurationGUI extends JFrame {
 					String names[][] = talkbox.getAudioFileNames();
 					String str = listAreaAudio.getSelectedValue();
 					int num = listAreaBtn.getSelectedValue();
-					names[currentBtnSet][num - 1] = "TalkBoxData/" + str;
+					names[currentBtnSet][num - 1] = "TalkBoxV2/TalkBoxData/" + str;
 					talkbox.setAudioFileNames(names);
 
 					init();
@@ -420,7 +416,7 @@ public class ConfigurationGUI extends JFrame {
 		try {
 			sound = new Sound();
 			btngroup = new ButtonGroup();
-			FileInputStream fileInputStream = new FileInputStream("TalkBoxData/configure.tbc");
+			FileInputStream fileInputStream = new FileInputStream("TalkBoxV2/TalkBoxData/configure.tbc");
 			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 			talkbox = (TalkBox) objectInputStream.readObject();
 			audioFileButtons = new JToggleButton[talkbox.getNumberOfAudioSets()][talkbox.getNumberOfAudioButtons()];
@@ -435,7 +431,7 @@ public class ConfigurationGUI extends JFrame {
 	 */
 	private void SetSetting() {
 		try {
-			FileOutputStream fileOutputStream = new FileOutputStream("TalkBoxData/configure.tbc");
+			FileOutputStream fileOutputStream = new FileOutputStream("TalkBoxV2/TalkBoxData/configure.tbc");
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 			objectOutputStream.writeObject(talkbox);
 			objectOutputStream.flush();
@@ -450,7 +446,7 @@ public class ConfigurationGUI extends JFrame {
 	}
 
 	private List<String> getAudioList() {
-		File f = new File("TalkBoxData/");
+		File f = new File("TalkBoxV2/TalkBoxData/");
 		List<String> names = new ArrayList<String>(Arrays.asList(f.list()));
 		List<String> wavList = new ArrayList<>();
 		for (int i = 0; i < names.size(); i++) {

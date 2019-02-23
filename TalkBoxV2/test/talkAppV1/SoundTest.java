@@ -2,6 +2,7 @@ package talkAppV1;
 
 import org.junit.jupiter.api.*;
 
+import static junit.framework.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.FileNotFoundException;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="jgoodies-forms-1.8.0.jar" scope="COMPILE">
+		<srcroot url="jar://$MODULE_DIR$/jgoodies-forms-1.8.0-sources.jar!/"/>
+		<relative-module-src project-related="jar://$PROJECT_DIR$/TalkBoxV2/jgoodies-forms-1.8.0-sources.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/TalkBoxV2/jgoodies-forms-1.8.0.jar!/"/>
+	</lib>
+	<lib name="JUnit5.3" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/junit-jupiter-api-5.4.0.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/apiguardian-api-1.0.0.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/opentest4j-1.1.1.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/junit-platform-commons-1.4.0.jar!/"/>
+	</lib>
+</component>
